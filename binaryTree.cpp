@@ -3,6 +3,7 @@
 #include <iostream>
 #include <queue>
 #include <stack>
+#include <vector>
 using namespace std;
 
 class node
@@ -64,26 +65,45 @@ void levelOrderTraversals(node *root)
     }
 }
 
-void reverseLevelOrderTraversal(node* root){
-    stack<node*> s;
-    queue<node*> q;
-    while(!q.empty()){
+void reverseLevelOrderTraversal(node *root)
+{
+    stack<node *> s;
+    queue<node *> q;
+    while (!q.empty())
+    {
         root = q.front();
         q.pop();
         s.push(root);
 
-        if(root->right)
+        if (root->right)
             q.push(root->right);
-        if(root->left)
+        if (root->left)
             q.push(root->left);
     }
     while (!s.empty())
     {
         root = s.top();
-        cout<<root->data<<" ";
+        cout << root->data << " ";
         s.pop();
     }
-    
+}
+
+void iterativeInorder(node *root)
+{
+    stack<node *> s;
+    node *curr = root;
+    while (!s.empty() || curr != nullptr)
+    {
+        if (curr != nullptr){
+            s.push(curr);
+            curr = curr->left;
+        }else{
+            curr = s.top();
+            s.pop();
+            cout<<curr->data;
+            curr = curr->right;
+        }
+    }
 }
 
 int main()
