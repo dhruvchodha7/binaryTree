@@ -103,7 +103,7 @@ void iterativeInorder(node *root)
         {
             curr = s.top();
             s.pop();
-            cout << curr->data;
+            cout << curr->data<<" ";
             curr = curr->right;
         }
     }
@@ -114,12 +114,42 @@ void iterativePreorder(node *root)
     if(root == nullptr) return;
     stack<node *> s;
     node *curr = root;
-    while(!s.empty()){
+    while(!s.empty() || root){
         if(curr != nullptr){
+            cout<<curr->data<<" ";
 
+            if(curr->right){
+                s.push(curr->right);
+            }
+            curr = curr->left;
+        
         }else{
-            
+            curr = s.top();
+            s.pop();
         }
+    }
+}
+
+void iterativePostorder(node* root){
+    if(root == nullptr) return;
+    stack<node*> s;
+    s.push(root);
+    stack<int> out;
+    while(!s.empty() || root){
+        node* curr = s.top();
+        s.pop();
+
+        out.push(curr->data);
+        if(curr->left)
+            s.push(curr->left);
+        
+        if(curr->right)
+            s.push(curr->right);
+    }
+
+    while(!out.empty()){
+        cout<<out.top()<<" ";
+        out.pop();
     }
 }
 int main()
