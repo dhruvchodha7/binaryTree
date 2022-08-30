@@ -94,18 +94,34 @@ void iterativeInorder(node *root)
     node *curr = root;
     while (!s.empty() || curr != nullptr)
     {
-        if (curr != nullptr){
+        if (curr != nullptr)
+        {
             s.push(curr);
             curr = curr->left;
-        }else{
+        }
+        else
+        {
             curr = s.top();
             s.pop();
-            cout<<curr->data;
+            cout << curr->data;
             curr = curr->right;
         }
     }
 }
 
+void iterativePreorder(node *root)
+{
+    if(root == nullptr) return;
+    stack<node *> s;
+    node *curr = root;
+    while(!s.empty()){
+        if(curr != nullptr){
+
+        }else{
+            
+        }
+    }
+}
 int main()
 {
     node *root = NULL;
