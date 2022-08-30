@@ -47,7 +47,7 @@ void levelOrderTraversals(node *root)
         node *temp = q.front();
         q.pop();
 
-        if (temp = NULL)
+        if (temp == NULL)
         {
             cout << endl;
             if (!q.empty())
